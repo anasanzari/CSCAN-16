@@ -14,8 +14,11 @@
 }
 
 *{
-    font-family: asper;
+    font-family: normal;
 }
+
+
+
 .main{
     position: relative;
     color: #eee;
@@ -130,6 +133,15 @@ a.social img{
     text-align: center;
 }
 
+
+
+.dates{
+background: rgba(255,255,255,.6);
+box-shadow: 1px 1px 2px rgba(0,0,0,.1);
+text-align: center;
+padding: 8px;
+color:#A5394E;
+}
 
 @media screen and (max-width: 400px){
 
