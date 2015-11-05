@@ -29,10 +29,13 @@
     text-align: center;
 }
 
+.main img{
+    width:125px;
+}
+
 .main h1{
     font-size: 5rem;
     margin:0;
-    padding-top: 150px;
 }
 
 .overlay,.front,.back{
@@ -60,6 +63,8 @@
 
 .speakers{
     padding:10px;
+    background: #E31E39;
+    color:#fff;
 }
 
 .center{
@@ -76,7 +81,10 @@
     overflow: hidden;
     margin: 5px;
     position: relative;
-
+    box-shadow: 1px 1px 3px rgba(0,0,0,.3);
+}
+.box .active{
+    box-shadow: -10px 10px 15px rgba(0,0,0,.5);
 }
 .box .spk:hover{
     cursor: pointer;
@@ -134,14 +142,67 @@ a.social img{
 }
 
 
-
-.dates{
-background: rgba(255,255,255,.6);
-box-shadow: 1px 1px 2px rgba(0,0,0,.1);
-text-align: center;
-padding: 8px;
-color:#A5394E;
+a.brochure{
+    background-color: #E53935;
+    -webkit-transition: background-color 0.5s ease;
+    -moz-transition: background-color 0.5s ease;
+    transition: background-color 0.5s ease;
+    -moz-box-shadow: -3px 3px 5px 1px rgba(0,0,0,.3);;
+    -webkit-box-shadow: -3px 3px 5px 1px rgba(0,0,0,.3);;
+    box-shadow:-3px 3px 5px 1px rgba(0,0,0,.3);
+    display: inline-block;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-size: 1em;
+   
 }
+a.brochure:hover{
+    background: #dd201c;
+}
+
+.menucontainer{  
+    display: inline-block;
+    padding-right: 10px;
+    margin-right: 10px;
+    border-right: 1px solid #fff;
+    vertical-align: middle;
+}
+
+ul.menu,ul.datemenu{
+    list-style: none;
+    text-align: left;
+}
+
+ul.menu li, ul.datemenu{
+    text-decoration: none;
+    font-size: 1.5rem;
+
+}
+ul.menu li a{
+    text-decoration: none;
+    color:#fff;
+    padding:5px 10px
+}
+ul.menu li a:hover{
+    cursor: pointer;
+    color: #E53935;
+}
+ul.menu li a img, ul.datemenu li img{
+    width:30px;
+}
+
+.desc{
+    display: none;
+}
+
+.show {
+    color: #fff;
+}
+.justify{
+    text-align: justify;
+}
+
 
 @media screen and (max-width: 400px){
 

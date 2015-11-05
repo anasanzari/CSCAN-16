@@ -48,4 +48,25 @@ $(".box .spk").hover(function () {
     });
 });
 
+var show = $(".spkdesc .show");
+var h = $(".spkdesc .a").html();
+show.html(h);
+
+$(".box .spk").click(function(){
+    if($(this).hasClass("active")) return;
+    $(".box .active").removeClass("active");
+    $(this).addClass("active");
+    var d = $(this).attr("data-val");
+    show.fadeOut(500,function(){
+        show.html($(".spkdesc ."+d).html()).fadeIn(500);
+    })
+    
+});
+
+$(".menucontainer ul li a").click(function(event){
+   // alert("hey");
+   event.preventDefault();
+   $('html,body').stop().animate({scrollTop:$(this.hash).offset().top+1},1000); 
+});
+
 
