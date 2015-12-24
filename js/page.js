@@ -48,17 +48,17 @@ $(".box .spk").hover(function () {
     });
 });
 
-var show = $(".spkdesc .show");
+var $show = $(".spkdesc .show");
 var h = $(".spkdesc .a").html();
-show.html(h);
+$show.html(h);
 
 $(".box .spk").click(function(){
     if($(this).hasClass("active")) return;
     $(".box .active").removeClass("active");
     $(this).addClass("active");
     var d = $(this).attr("data-val");
-    show.fadeOut(500,function(){
-        show.html($(".spkdesc ."+d).html()).fadeIn(500);
+    $show.fadeOut(500,function(){
+        $show.html($(".spkdesc ."+d).html()).fadeIn(500);
     })
 
 });
@@ -107,10 +107,19 @@ $("#studentbtn").click(function () {
     $error.hide();
 
 });
+
+var $another = $('#another');
+var $mesg = $('.mesg');
+var mesg = document.querySelector('.mesg');
+$another.click(function(){
+  close(mesg);
+  show(studentform);
+})
+
 var regSection = document.querySelector('.reg');
 var $regSection =  $(".reg");
 var autoHeight = $regSection.height();
-var visible = true;
+var visible = false;
 $("#register").click(function(){
   if(visible){
     dynamics.animate(regSection, {height:'0px'}, {

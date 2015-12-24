@@ -1,6 +1,27 @@
+<?php
+/* bootstrap */
+require __DIR__.'/./vendor/autoload.php';
+require './classes/boot.php';
+require './classes/Student.php';
+require './classes/Faculty.php';
+
+$success = false;
+if (isset($_POST['type'])) {
+    if ($_POST['type'] == "student") {
+      $v = Student::create($_POST);
+    }else if($_POST['type'] == "faculty"){
+      $v = Faculty::create($_POST);
+    }
+
+    if($v){
+      $success = true;
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="UTF-8">
@@ -11,8 +32,6 @@
   <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/dynamics.min.js"></script>
-
-
 </head>
 
 <body>
@@ -119,12 +138,20 @@
   </div>
 
   <div class="reg" id="reg">
+    <?php if($success){
+    ?>
+        <div class="mesg">
+          <h2>You've successfully registered for Confluence'16.</h2>
+          <a class="brochure hashmenu" href="#reg" id="another">Register Another</a>
+        </div>
+    <?php
+    }
+    ?>
     <div class="wrap">
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-6 col-md-offset-3">
-
-            <form id="studentform" action="" method="POST">
+            <form id="studentform" action="#reg" method="POST">
               <h2>Student Registration <a id="facultybtn" class="btn btn-danger">Faculty Form</a></h2>
               <div class="form-group">
                 <!--label>College</label-->
@@ -174,7 +201,7 @@
               <input type="submit" class="fbtn btn btn-default" value="Register" />
             </form>
 
-            <form id="facultyform" action="" method="POST">
+            <form id="facultyform" action="#reg" method="POST">
               <h2>Faculty Registration <a id="studentbtn" class="btn btn-danger">Student Form</a></h2>
               <div class="form-group">
                 <!--label>College</label-->
@@ -213,7 +240,7 @@
                 <div class="g-recaptcha" data-sitekey="6LfwugwTAAAAAJPJ_hXFvzjprC8apea865BFjqB3"></div>
               </div>
 
-              <input type="hidden" name="type" value="student" />
+              <input type="hidden" name="type" value="faculty" />
               <input type="submit" class="fbtn btn btn-default" value="Register" />
             </form>
 
@@ -355,6 +382,21 @@
   </div>
 
   <script src="./js/page.js"></script>
+  <script>
+
+    <?php if($success){
+      ?>
+      $studentform.hide();
+      $regSection.css('height',autoHeight);
+      visible = true;
+    <?php
+    }else {
+    ?>
+      $regSection.css('height','0px');
+    <?php
+      }
+    ?>
+  </script>
 
 </body>
 

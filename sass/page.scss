@@ -176,12 +176,22 @@ ul.datemenu{
   color:#fff;
   display: block;
   overflow: hidden;
-
+  position: relative;
   @extend .trans;
 
   .wrap{
     padding:10px;
     padding-bottom: 50px;
+
+  }
+  .mesg{
+    text-align: center;
+    position: absolute;
+    width:100%;
+    top:30%;
+    h2{
+      text-align: center;
+    }
   }
 }
 
