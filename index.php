@@ -4,16 +4,28 @@ require __DIR__.'/./vendor/autoload.php';
 require './classes/boot.php';
 require './classes/Student.php';
 require './classes/Faculty.php';
+require './classes/CaptchaVerify.php';
 
 $post = false;
+$error = 0;
+const ERROR_DB = 1;
+const ERROR_CAPTCHA = 2;
+
 if (isset($_POST['type'])) {
     $post = true;
-    if ($_POST['type'] == "student") {
-      $v = Student::create($_POST);
-    }else if($_POST['type'] == "faculty"){
-      $v = Faculty::create($_POST);
+    $verify = CaptchaVerify::verify($_POST["g-recaptcha-response"]);
+    if (!$verify) {
+        $error = ERROR_CAPTCHA;
+    }else{
+      if ($_POST['type'] == "student") {
+        $v = Student::create($_POST);
+      }else if($_POST['type'] == "faculty"){
+        $v = Faculty::create($_POST);
+      }
+      if(!$v){
+        $error = ERROR_DB;
+      }
     }
-
 }
 
 ?>
@@ -138,15 +150,32 @@ if (isset($_POST['type'])) {
     </div>
 
     <div class="reg" id="reg">
-      <?php if($post){
-    ?>
-        <div class="mesg">
-          <h2>You've successfully registered for Confluence'16.</h2>
-          <a class="brochure hashmenu" href="#reg" id="another">Register Another</a>
-        </div>
-        <?php
-    }
-    ?>
+      <?php
+      if($post){
+        if($error == 0){
+      ?>
+          <div class="mesg">
+            <h2>You've successfully registered for Confluence'16.</h2>
+            <a class="brochure hashmenu" href="#reg" id="another">Register Another</a>
+          </div>
+      <?php
+        }else if($error == ERROR_DB){
+      ?>
+          <div class="mesg">
+            <h2>Sorry.Unknown error occured.Please try again</h2>
+            <a class="brochure hashmenu" href="#reg" id="another">Try Again</a>
+          </div>
+     <?php
+        }else if($error == ERROR_CAPTCHA){
+          ?>
+              <div class="mesg">
+                <h2>Captcha Verification required. Please try again.</h2>
+                <a class="brochure hashmenu" href="#reg" id="another">Try Again</a>
+              </div>
+     <?php }
+      }
+      ?>
+
           <div class="wrap">
             <div class="container-fluid">
               <div class="row">
@@ -194,7 +223,7 @@ if (isset($_POST['type'])) {
                       </label>
                     </div>
                     <div class="form-group">
-                      <div class="g-recaptcha" data-sitekey="6LfwugwTAAAAAJPJ_hXFvzjprC8apea865BFjqB3"></div>
+                      <div id="Recap1" class="recaptcha"></div>
                     </div>
 
                     <input type="hidden" name="type" value="student" />
@@ -237,7 +266,7 @@ if (isset($_POST['type'])) {
                       </label>
                     </div>
                     <div class="form-group">
-                      <div class="g-recaptcha" data-sitekey="6LfwugwTAAAAAJPJ_hXFvzjprC8apea865BFjqB3"></div>
+                      <div id="Recap2" class="recaptcha"></div>
                     </div>
 
                     <input type="hidden" name="type" value="faculty" />
@@ -515,7 +544,18 @@ if (isset($_POST['type'])) {
       <?php
       }
     ?>
+
+    var CaptchaCallback = function(){
+      grecaptcha.render('Recap1',{
+        'sitekey' : '6Lew1BMTAAAAABO4bm79an2x7n7Ix7mQfCGd44S2'
+      });
+      grecaptcha.render('Recap2',{
+        'sitekey' : '6Lew1BMTAAAAABO4bm79an2x7n7Ix7mQfCGd44S2'
+      });
+    }
+
     </script>
+    <script src='https://www.google.com/recaptcha/api.js?onload=CaptchaCallback&render=explicit'></script>
 
   </body>
 

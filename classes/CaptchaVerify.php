@@ -9,7 +9,7 @@ class CaptchaVerify {
 
     public static function verify($response) {
         $url =  "https://www.google.com/recaptcha/api/siteverify";
-        $data = array('secret' => '6LfwugwTAAAAAPgn64O1a1AqEcPRJDMBTKZKTfFj', 'response' => $response);
+        $data = array('secret' => '6Lew1BMTAAAAAP3I4O_ZlexkHFkhzCS-PzYjoJTv', 'response' => $response);
         $res = self::post($url,$data);
         $val = json_decode($res,TRUE);
         return $val["success"];
