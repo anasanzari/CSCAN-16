@@ -6,8 +6,7 @@
 // Base class
 .panel {
   margin-bottom: $line-height-computed;
-  background-color: $panel-bg;
-  border: 1px solid transparent;
+  background-color: lighten($panel-bg,10%);
   border-radius: $panel-border-radius;
   @include box-shadow(0 1px 1px rgba(0,0,0,.05));
 }
@@ -21,12 +20,21 @@
 // Optional heading
 .panel-heading {
   padding: $panel-heading-padding;
-  border-bottom: 1px solid transparent;
+  background-color: lighten($panel-bg,4%);
+  display: block;
+  text-decoration: none;
+  color:#fff;
+  font-size: 16px;
   @include border-top-radius(($panel-border-radius - 1));
 
   > .dropdown .dropdown-toggle {
     color: inherit;
   }
+}
+.panel-heading:hover,.panel-heading:focus{
+  text-decoration: none;
+  color:#fff;
+  background-color: $panel-bg;
 }
 
 // Within heading, strip any `h*` tag of its default margins for spacing.
@@ -237,7 +245,7 @@
 
     + .panel-collapse > .panel-body,
     + .panel-collapse > .list-group {
-      border-top: 1px solid $panel-inner-border;
+      /*border-top: 1px solid $panel-inner-border;*/
     }
   }
 
