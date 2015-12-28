@@ -29,16 +29,12 @@ if (isset($_POST['type'])) {
 }
 
 ?>
-
   <!DOCTYPE html>
   <html lang="en">
-
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!--link href="./css/bootstrap.min.css" rel="stylesheet" />
-        <link href="./css/pagess.css" rel="stylesheet" /-->
     <link href="./css/styles.css" rel="stylesheet">
     <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
@@ -342,7 +338,7 @@ if (isset($_POST['type'])) {
       </div>
     </div>
 
-    <div class="faq" id="faq" style=>
+    <div class="faq" id="faq">
       <h1 class="center">FAQ</h1>
       <div class="container-fluid">
         <div class="row">
