@@ -42,7 +42,48 @@ if (isset($_POST['type'])) {
   </head>
 
   <body>
-    <div class="main">
+
+    <div class="header">
+      <div class="over"></div>
+      <div class="bg"></div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6 col-md-offset-0 col-xs-12">
+            <div class="sub">
+              <img src="images/logo.png" />
+              <div>
+                <h1>C-SCAN '16</h1>
+                <h2>Computer Science Conference of All NITs
+                 <br/>Feb 2 - Feb 2, 2016, NIT Calicut.</h2>
+              </div>
+            </div>
+            <div class="menucontainer hidden-xs ">
+              <ul class="menu">
+                <li>
+                  <a class="hashmenu" href="#about">
+                    <img src="images/icons/icon_point.png" /> Register</a>
+                </li>
+                <li>
+                  <a class="hashmenu" href="#faq">
+                    <img src="images/icons/icon_reg.png" /> FAQ</a>
+                </li>
+                <li>
+                  <a class="hashmenu" href="#contact">
+                    <img src="images/icons/icon_contact.png" /> Contact Us</a>
+                </li>
+              </ul>
+            </div>
+            <a class="brochure" href="#">Download Brochure</a>
+          </div>
+        </div>
+      </div>
+
+
+
+
+    </div>
+
+<!--div class="main">
 
       <div class="back"></div>
       <div class="front"></div>
@@ -68,10 +109,6 @@ if (isset($_POST['type'])) {
                     <img src="images/icons/icon_reg.png" /> Register</a>
                 </li>
                 <li>
-                  <a class="hashmenu" href="#speakers">
-                    <img src="images/icons/icon_speaker.png" /> Speakers</a>
-                </li>
-                <li>
                   <a class="hashmenu" href="#contact">
                     <img src="images/icons/icon_contact.png" /> Contact Us</a>
                 </li>
@@ -82,7 +119,8 @@ if (isset($_POST['type'])) {
           </div>
         </div>
       </div>
-    </div>
+    </div-->
+
     <div class="about" id="about">
       <div class="container-fluid">
         <div class="row">
@@ -96,7 +134,18 @@ if (isset($_POST['type'])) {
             </p>
           </div>
           <div class="col-md-5">
-            <h1 class="center">Main Programme</h1>
+
+            <div class="sponsors">
+
+              <img src="images/tata.png" />
+              <p>in association with</p>
+              <div class="assoc">
+                <img src="images/nitc.png" />
+                <img src="images/csea.png" />
+              </div>
+            </div>
+
+            <!--h1 class="center">Main Programme</h1>
             <ul class="datemenu">
               <li>
                 <img src="images/icons/icon_pwhite.png" /> Faculty/PhD students discussions on research collaborations.</li>
@@ -106,16 +155,17 @@ if (isset($_POST['type'])) {
                 <img src="images/icons/icon_pwhite.png" /> Discussions on credit transfer and possible MOOC courses.</li>
               <li>
                 <img src="images/icons/icon_pwhite.png" /> Discussions on formation of research groups.</li>
-            </ul>
+            </ul-->
           </div>
         </div>
       </div>
     </div>
 
     <div class="registration" id="register">
-      <h1 class="center">Registration</h1>
+
       <div class="container-fluid">
         <div class="row">
+          <h1 class="center">Registration</h1>
           <div class="col-md-4">
             <h3 class="center">Important Dates</h3>
             <ul class="datemenu">
@@ -273,69 +323,6 @@ if (isset($_POST['type'])) {
               </div>
             </div>
           </div>
-    </div>
-
-
-
-    <div class="speakers" id="speakers">
-      <h1 class="center">Speakers</h1>
-      <div class="box">
-        <div class="spk active" data-val="a">
-          <p>Athena</p>
-          <img src="./images/speakers/ath.jpg" />
-        </div>
-        <div class="spk" data-val="b">
-          <p>Aparna</p>
-          <img src="./images/speakers/apa.jpg" />
-        </div>
-        <div class="spk" data-val="c">
-          <p>Reshma</p>
-          <img src="./images/speakers/shi.jpg" />
-        </div>
-        <div class="spk" data-val="a">
-          <p>Kiran</p>
-          <img src="./images/speakers/shiv.jpg" />
-        </div>
-        <div class="spk" data-val="b">
-          <p>Sreeja</p>
-          <img src="./images/speakers/sre.jpg" />
-        </div>
-        <div class="spk" data-val="c">
-          <p>Rohit</p>
-          <img src="./images/speakers/rohi.jpg" />
-        </div>
-      </div>
-      <div class="container-fluid">
-        <div class="row">
-          <div class="spkdesc col-md-6 col-md-offset-3">
-            <div class="show"></div>
-            <div class="desc a">
-              <h3>Athena</h3>
-              <p>Scarlett Johansson is an American actress, model, and singer. She made her film debut in North. Johansson subsequently starred in Manny & Lo in 1996, and garnered further acclaim and prominence with roles in The Horse Whisperer and Ghost
-                World. She shifted to adult roles with her performances in Girl with a Pearl Earring (2003) and Sofia Coppola's Lost in Translation (2003), for which she won a BAFTA award for Best Actress in a Leading Role. Her subsequent films included
-                A Love Song for Bobby Long (2004), Woody Allen's Match Point (2005), The Island (2005), The Black Dahlia (2006), The Prestige (2006), The Other Boleyn Girl (2008), Vicky Cristina Barcelona (2008), Just Not That Into You (2009), Don Jon
-                (2013), Her (2013), Under the Skin (2013), and Lucy (2014).
-              </p>
-            </div>
-            <div class="desc b">
-              <h3>Scarlett</h3>
-              <p>Scarlett Johansson is an American actress, model, and singer. She made her film debut in North. Johansson subsequently starred in Manny & Lo in 1996, and garnered further acclaim and prominence with roles in The Horse Whisperer and Ghost
-                World. She shifted to adult roles with her performances in Girl with a Pearl Earring (2003) and Sofia Coppola's Lost in Translation (2003), for which she won a BAFTA award for Best Actress in a Leading Role. Her subsequent films included
-                A Love Song for Bobby Long (2004), Woody Allen's Match Point (2005), The Island (2005), The Black Dahlia (2006), The Prestige (2006), The Other Boleyn Girl (2008), Vicky Cristina Barcelona (2008), Just Not That Into You (2009), Don Jon
-                (2013), Her (2013), Under the Skin (2013), and Lucy (2014).
-              </p>
-            </div>
-            <div class="desc c">
-              <h3>Megan</h3>
-              <p>Scarlett Johansson is an American actress, model, and singer. She made her film debut in North. Johansson subsequently starred in Manny & Lo in 1996, and garnered further acclaim and prominence with roles in The Horse Whisperer and Ghost
-                World. She shifted to adult roles with her performances in Girl with a Pearl Earring (2003) and Sofia Coppola's Lost in Translation (2003), for which she won a BAFTA award for Best Actress in a Leading Role. Her subsequent films included
-                A Love Song for Bobby Long (2004), Woody Allen's Match Point (2005), The Island (2005), The Black Dahlia (2006), The Prestige (2006), The Other Boleyn Girl (2008), Vicky Cristina Barcelona (2008), Just Not That Into You (2009), Don Jon
-                (2013), Her (2013), Under the Skin (2013), and Lucy (2014).
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
 
     <div class="faq" id="faq">

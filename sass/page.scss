@@ -6,7 +6,7 @@
 
 @font-face{
     font-family: normal;
-    src:url('../fonts/Raleway-Regular.ttf');
+    src:url('../fonts/OpenSans-Regular.ttf');
 }
 
 *{
@@ -54,6 +54,114 @@ ul.datemenu{
   }
 }
 
+.shadow{
+  -moz-box-shadow: -3px 3px 5px 1px rgba(0,0,0,.6);;
+  -webkit-box-shadow: -3px 3px 5px 1px rgba(0,0,0,.6);;
+  box-shadow:-3px 3px 5px 1px rgba(0,0,0,.6);
+}
+
+.header{
+  min-height: 400px;
+  padding-top: 10px;
+  color:#fff;
+  position: relative;
+  .bg{
+    position: absolute;
+    top:0;
+    left:0;
+    height:400px;
+    width:100%;
+    background-position: fixed;
+    background-size: cover;
+    z-index: -2;
+    background-image: url('../images/nit.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  .over{
+    position: absolute;
+    top:0;
+    left:0;
+    height:400px;
+    width:100%;
+    background-position: fixed;
+    background-size: cover;
+      z-index: -1;
+      background: rgba(0,0,0,.6);
+  }
+
+  .spn{
+    position: absolute;
+    bottom:10px;
+    right:25px;
+
+    img{
+      @extend .shadow;
+      padding: 5px;
+      background: rgba(255,255,255,.95);
+      width:100px;
+    }
+
+  }
+
+
+  .sub{
+    margin-left:50px;
+    margin-top:20px;
+    img{
+      width:125px;
+      margin-right: 10px;
+      margin-top: 15px;
+    }
+    h3{
+      font-size: 1.5rem;
+    }
+    h1{
+      font-size:5rem;
+    }
+    h2{
+      margin-top: 0;
+      font-size: 2rem;
+      line-height: 3rem;
+    }
+
+    div{
+      display: inline-block;
+      vertical-align: top;
+    }
+  }
+  .menucontainer{
+      display: inline-block;
+      padding:0px 10px 0px 50px;
+      margin-top: 25px;
+      margin-right: 10px;
+      border-right: 1px solid #fff;
+      vertical-align: middle;
+  }
+
+  @media screen and (max-width: 480px) {
+    .sub{
+      margin-left:0px;
+      margin-top:0px;
+      img{
+        width:70px;
+        display: block;
+      }
+      h3{
+        font-size: 1rem;
+      }
+      h1{
+        font-size:3rem;
+      }
+      h2{
+        margin-top: 0;
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
 .main{
     position: relative;
     color: #eee;
@@ -80,6 +188,7 @@ ul.datemenu{
     .menucontainer{
         display: inline-block;
         padding-right: 10px;
+        padding-left: 25px;
         margin-right: 10px;
         border-right: 1px solid #fff;
         vertical-align: middle;
@@ -114,11 +223,28 @@ ul.datemenu{
 
 
 .about{
-  background: #339F87;
-  color:#fff;
+
+  color:#000;
+
+  .sponsors{
+    text-align: center;
+    img{
+      max-width: 300px;
+    }
+    .assoc{
+      text-align: center;
+      img{
+        width:100px;
+        margin-right: 10px;
+      }
+    }
+  }
+
 }
 
 .registration{
+    background: #3A6F81;
+    color:#fff;
   .btncont{
     padding:30px 0px;
     text-align: center;
@@ -258,7 +384,7 @@ a.brochure:hover{
 
 
 .recaptcha{
-  min-height: 70px;  
+  min-height: 70px;
 }
 
 
