@@ -227,9 +227,11 @@ ul.datemenu{
   color:#000;
 
   .sponsors{
+    padding-top: 5px;
+    padding-bottom: 20px;
     text-align: center;
     img{
-      max-width: 300px;
+      max-width: 250px;
     }
     .assoc{
       text-align: center;
@@ -315,8 +317,19 @@ ul.datemenu{
     position: absolute;
     width:100%;
     top:30%;
+    .brochure{
+      margin-top: 20px;
+    }
     h2{
       text-align: center;
+    }
+    ul{
+      display: inline-block;
+      margin: 15px auto;
+      text-align: left;
+      li{
+
+      }
     }
   }
 }

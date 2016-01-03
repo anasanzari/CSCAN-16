@@ -1,11 +1,13 @@
 <?php
 /* bootstrap */
+namespace App;
 require __DIR__.'/./vendor/autoload.php';
 require './classes/boot.php';
 require './classes/Student.php';
 require './classes/Faculty.php';
+require_once './config.php';
 
-if(isset($_POST['password'])&&$_POST['password']=="1234"){
+if(isset($_POST['password'])&&$_POST['password']==$password){
   $logged = true;
 }
 
@@ -36,10 +38,13 @@ if(isset($_POST['password'])&&$_POST['password']=="1234"){
              <table class="table">
                <thead>
                  <tr>
+                   <td>No</td>
+                   <td>RegId</td>
                    <td>College</td>
                    <td>Faculty</td>
                    <td>Name</td>
-                   <td>Roll No</td>
+                   <td>Email</td>
+                   <td>Phone</td>
                    <td>Course</td>
                    <td>Semester</td>
                    <td>Gender</td>
@@ -48,14 +53,18 @@ if(isset($_POST['password'])&&$_POST['password']=="1234"){
                </thead>
                <tbody>
              <?php
-              $s = Student::all();
-              foreach ($s as $student) {
+              $s = Student::with('colg')->orderBy('college', 'asc')->get();
+              foreach ($s as $key => $student) {
+                $regid = $student->colg->abbr."S".str_pad($student->regid, 3, '0', STR_PAD_LEFT);
                 ?>
                 <tr>
-                  <td><?=$student->college?></td>
+                  <td><?=$key+1?></td>
+                  <td><?=$regid?></td>
+                  <td><?=$student->colg->name?></td>
                   <td><?=$student->faculty?></td>
                   <td><?=$student->name?></td>
-                  <td><?=$student->rollno?></td>
+                  <td><?=$student->email?></td>
+                  <td><?=$student->phone?></td>
                   <td><?=$student->course?></td>
                   <td><?=$student->semester?></td>
                   <td><?=$student->gender?></td>
@@ -75,8 +84,12 @@ if(isset($_POST['password'])&&$_POST['password']=="1234"){
              <table class="table">
                <thead>
                  <tr>
+                   <td>No</td>
+                   <td>Reg ID</td>
                    <td>College</td>
                    <td>Name</td>
+                   <td>Email</td>
+                   <td>Phone</td>
                    <td>Designation</td>
                    <td>Interest</td>
                    <td>Gender</td>
@@ -85,12 +98,17 @@ if(isset($_POST['password'])&&$_POST['password']=="1234"){
                </thead>
                <tbody>
              <?php
-              $s = Faculty::all();
-              foreach ($s as $student) {
+              $s = Faculty::with('colg')->orderBy('college', 'asc')->get();
+              foreach ($s as $key => $student) {
+                $regid = $student->colg->abbr."F".str_pad($student->regid, 3, '0', STR_PAD_LEFT);
                 ?>
                 <tr>
-                  <td><?=$student->college?></td>
+                  <td><?=$key+1?></td>
+                  <td><?=$regid?></td>
+                  <td><?=$student->colg->name?></td>
                   <td><?=$student->name?></td>
+                  <td><?=$student->email?></td>
+                  <td><?=$student->phone?></td>
                   <td><?=$student->designation?></td>
                   <td><?=$student->interest?></td>
                   <td><?=$student->gender?></td>
@@ -100,7 +118,7 @@ if(isset($_POST['password'])&&$_POST['password']=="1234"){
               ?>
             </tbody>
           </table>
-
+<a class="btn btn-danger" href="javascript:window.print()">Print</a>
 
            </div>
          </div>
@@ -121,9 +139,11 @@ if(isset($_POST['password'])&&$_POST['password']=="1234"){
                <input type="submit" class="btn btn-default" value="Authenticate">
              </div>
              </form
+
            </div>
          </div>
        </div>
+
 
 
   <?php

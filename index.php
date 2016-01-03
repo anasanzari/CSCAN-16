@@ -1,15 +1,27 @@
 <?php
+
 /* bootstrap */
 require __DIR__.'/./vendor/autoload.php';
+require './config.php';
 require './classes/boot.php';
-require './classes/Student.php';
-require './classes/Faculty.php';
-require './classes/CaptchaVerify.php';
+require_once './classes/Student.php';
+require_once './classes/Faculty.php';
+require_once './classes/College.php';
+require_once './classes/CaptchaVerify.php';
+
+use Nette\Mail\Message;
+use Nette\Mail\SendmailMailer;
+use Illuminate\Validation\Factory as ValidatorFactory;
+use Symfony\Component\Translation\Translator;
+use App\College;
+use App\Student;
+use App\Faculty;
 
 $post = false;
 $error = 0;
 const ERROR_DB = 1;
 const ERROR_CAPTCHA = 2;
+const ERROR_INVALID = 3;
 
 if (isset($_POST['type'])) {
     $post = true;
@@ -17,13 +29,85 @@ if (isset($_POST['type'])) {
     if (!$verify) {
         $error = ERROR_CAPTCHA;
     }else{
+
+      $mail = new Message;
+      $mail->setFrom("CSCAN'16 <noreply@cscan.org>")
+      ->addTo($_POST['email'])
+      ->setSubject("CSAN'16 Registration");
+
+      $mailer = new Nette\Mail\SmtpMailer(array(
+        'host' => 'smtp.gmail.com',
+        'username' => $mailer_username,
+        'password' => $mailer_password,
+        'secure' => 'ssl',
+      ));
+
+      $factory = new ValidatorFactory(new Translator('en'));
+      $messages = array(
+          'required' => 'The :attribute field is required.',
+          'max' => 'Please enter a valid :attribute number.',
+          'min' => 'Please enter a valid :attribute field.',
+          'email' => 'Please enter a valid email address.',
+          'numberic' => 'The :attribute field should consist only of digits.',
+          'integer' => 'The :attribute field should be selected.'
+      );
+
       if ($_POST['type'] == "student") {
-        $v = Student::create($_POST);
+        $rules = array(
+          'college' => 'required|integer',
+          'faculty' => 'required',
+          'name' => 'required',
+          'email' => 'required|email',
+          'phone' => 'required|numeric|min:10',
+          'course'=>'required',
+          'semester'=>'required',
+          'gender'=>'required',
+          'food'=>'required'
+        );
+        $validator = $factory->make($_POST, $rules,$messages);
+        if ($validator->passes()) {
+
+          $num = Student::where('college',$_POST['college'])->count();
+          $_POST['regid'] = $num+1;
+
+          if($v=Student::create($_POST)){
+            $regid = $v->colg->abbr."S".str_pad($_POST['regid'], 3, '0', STR_PAD_LEFT);
+            $mail->setBody("You have successfully registered for CSCAN'16. Your registration id is ".$regid.".");
+            $mailer->send($mail);
+          }else{
+            $error = ERROR_DB;
+          }
+        }else{
+          $error = ERROR_INVALID;
+        }
       }else if($_POST['type'] == "faculty"){
-        $v = Faculty::create($_POST);
-      }
-      if(!$v){
-        $error = ERROR_DB;
+        $rules = array(
+          'college' => 'required|integer',
+          'name' => 'required',
+          'email' => 'required|email',
+          'phone' => 'required|numeric|min:10',
+          'designation' => 'required',
+          'interest' => 'required',
+          'gender'=>'required',
+          'food'=>'required'
+        );
+        $validator = $factory->make($_POST, $rules,$messages);
+        if ($validator->passes()) {
+
+          $num = Faculty::where('college',$_POST['college'])->count();
+          $_POST['regid'] = $num+1;
+
+          if($v = Faculty::create($_POST)){
+            $regid = $v->colg->abbr."F".str_pad($_POST['regid'], 3, '0', STR_PAD_LEFT);
+            $mail->setBody("You have successfully registered for CSCAN'16. Your registration id is ".$regid);
+            $mailer->send($mail);
+          }else{
+            $error = ERROR_DB;
+          }
+        }else{
+          $error = ERROR_INVALID;
+        }
+
       }
     }
 }
@@ -60,7 +144,7 @@ if (isset($_POST['type'])) {
             <div class="menucontainer hidden-xs ">
               <ul class="menu">
                 <li>
-                  <a class="hashmenu" href="#about">
+                  <a class="hashmenu" href="#register">
                     <img src="images/icons/icon_point.png" /> Register</a>
                 </li>
                 <li>
@@ -83,60 +167,21 @@ if (isset($_POST['type'])) {
 
     </div>
 
-<!--div class="main">
-
-      <div class="back"></div>
-      <div class="front"></div>
-      <div class="overlay"></div>
-
-      <div class="center logo">
-        <img src="images/logo.png" />
-      </div>
-      <h1>Confluence '16</h1>
-      <h2>National Institute of Technology, Calicut</h2>
-
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-6 col-md-offset-3 col-xs-12">
-            <div class="menucontainer">
-              <ul class="menu">
-                <li>
-                  <a class="hashmenu" href="#about">
-                    <img src="images/icons/icon_point.png" /> About Confluence</a>
-                </li>
-                <li>
-                  <a class="hashmenu" href="#register">
-                    <img src="images/icons/icon_reg.png" /> Register</a>
-                </li>
-                <li>
-                  <a class="hashmenu" href="#contact">
-                    <img src="images/icons/icon_contact.png" /> Contact Us</a>
-                </li>
-              </ul>
-            </div>
-            <a class="brochure" href="#">Download Brochure</a>
-
-          </div>
-        </div>
-      </div>
-    </div-->
-
     <div class="about" id="about">
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-5 col-md-offset-1">
-            <h1 class="center">About Confluence</h1>
+            <h1 class="center">About CSCAN</h1>
             <p class="justify">
-              Confluence 2016, the first of it's kind, is a conference aimed at bringing in student-teacher fraternity of CS Departments of reputed NIT's across the nation under a single umbrella for exchange of ideas spark innovation. The conference would serve as
+              CSCAN 2016, the first of it's kind, is a conference aimed at bringing in student-teacher fraternity of CS Departments of reputed NIT's across the nation under a single umbrella for exchange of ideas spark innovation. The conference would serve as
               a platform to improve interaction and bridge the gap between faculty and students of different NITs. This would help identify patrons of similiar research areas and help initiate collaboration in research projects to subsequently publish
-              research papers. This conference presents excellent opportunity for students among various NITs to collaborate and form strong ties of technical expertise. This year's edition of Confluence will be hosted by National Institute of Technology
+              research papers. This conference presents excellent opportunity for students among various NITs to collaborate and form strong ties of technical expertise. This year's edition of CSCAN will be hosted by National Institute of Technology
               Calicut.
             </p>
           </div>
           <div class="col-md-5">
-
+            <h1 class="center">Sponsor</h1>
             <div class="sponsors">
-
               <img src="images/tata.png" />
               <p>in association with</p>
               <div class="assoc">
@@ -145,17 +190,6 @@ if (isset($_POST['type'])) {
               </div>
             </div>
 
-            <!--h1 class="center">Main Programme</h1>
-            <ul class="datemenu">
-              <li>
-                <img src="images/icons/icon_pwhite.png" /> Faculty/PhD students discussions on research collaborations.</li>
-              <li>
-                <img src="images/icons/icon_pwhite.png" /> Discussions on internship programs and faculty exchange.</li>
-              <li>
-                <img src="images/icons/icon_pwhite.png" /> Discussions on credit transfer and possible MOOC courses.</li>
-              <li>
-                <img src="images/icons/icon_pwhite.png" /> Discussions on formation of research groups.</li>
-            </ul-->
           </div>
         </div>
       </div>
@@ -201,7 +235,8 @@ if (isset($_POST['type'])) {
         if($error == 0){
       ?>
           <div class="mesg">
-            <h2>You've successfully registered for Confluence'16.</h2>
+            <h2>You've successfully registered for CSCAN'16.</h2>
+            <h3>Your registration id is <?=$regid?>. You'll receive a confirmation mail from us.</h3>
             <a class="brochure hashmenu" href="#reg" id="another">Register Another</a>
           </div>
       <?php
@@ -215,10 +250,29 @@ if (isset($_POST['type'])) {
         }else if($error == ERROR_CAPTCHA){
           ?>
               <div class="mesg">
-                <h2>Captcha Verification required. Please try again.</h2>
+                <h2>Registration failed.</h2>
+                <ul>
+                  <li>Captcha Verification required.</li>
+                </ul>
                 <a class="brochure hashmenu" href="#reg" id="another">Try Again</a>
               </div>
-     <?php }
+     <?php }else if($error == ERROR_INVALID){
+       ?>
+           <div class="mesg">
+             <h2>Registration failed.</h2>
+             <ul>
+            <?php
+              $messages = $validator->messages();
+              foreach ($messages->all() as $message)
+              {
+                  echo "<li>".$message."</li>";
+              }
+            ?>
+            </ul>
+            <br/>
+             <a class="brochure hashmenu" href="#reg" id="another">Try Again</a>
+           </div>
+        <?php }
       }
       ?>
 
@@ -229,8 +283,18 @@ if (isset($_POST['type'])) {
                   <form id="studentform" action="#reg" method="POST">
                     <h2>Student Registration <a id="facultybtn" class="btn btn-danger">Faculty Form</a></h2>
                     <div class="form-group">
-                      <!--label>College</label-->
-                      <input type="text" name="college" class="form-control" placeholder="College" value="" required>
+                      <select name="college" class="form-control" required>
+                        <option value="" disabled  selected>Select College</option>
+                         <?php
+                           $colleges = College::all();
+                           foreach ($colleges as $key => $op) {
+                             ?>
+                             <option value="<?=$op->id?>"><?=$op->name?></option>
+                        <?php
+                           }
+                           ?>
+                          ?>
+                      </select>
                     </div>
                     <div class="form-group">
                       <!--label>Password</label-->
@@ -240,7 +304,10 @@ if (isset($_POST['type'])) {
                       <input type="text" name="name" class="form-control" placeholder="Participant Name" required>
                     </div>
                     <div class="form-group">
-                      <input type="text" name="rollno" class="form-control" placeholder="Participant Roll No" required>
+                      <input type="email" name="email" class="form-control" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                      <input type="number" name="phone" class="form-control" placeholder="Phone" required>
                     </div>
                     <div class="form-group">
                       <input type="text" name="course" class="form-control" placeholder="Course" required>
@@ -279,14 +346,29 @@ if (isset($_POST['type'])) {
                   <form id="facultyform" action="#reg" method="POST">
                     <h2>Faculty Registration <a id="studentbtn" class="btn btn-danger">Student Form</a></h2>
                     <div class="form-group">
-                      <!--label>College</label-->
-                      <input type="text" name="college" class="form-control" placeholder="College" value="" required>
+                      <select name="college" class="form-control" required>
+                        <option value="" disabled  selected>Select College</option>
+                         <?php
+                           foreach ($colleges as $key => $op) {
+                             ?>
+                             <option value="<?=$op->id?>"><?=$op->name?></option>
+                        <?php
+                           }
+                           ?>
+                          ?>
+                      </select>
                     </div>
                     <div class="form-group">
                       <input type="text" name="name" class="form-control" placeholder="Participant Name" required>
                     </div>
                     <div class="form-group">
                       <input type="text" name="designation" class="form-control" placeholder="Designation" required>
+                    </div>
+                    <div class="form-group">
+                      <input type="email" name="email" class="form-control" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                      <input type="number" name="phone" class="form-control" placeholder="Phone" required>
                     </div>
                     <div class="form-group">
                       <input type="text" name="interest" class="form-control" placeholder="Area of Interest" required>
