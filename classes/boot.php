@@ -2,13 +2,15 @@
 
 use Illuminate\Database\Capsule\Manager as Capsule;
 
+require_once './config.php';
+
 $capsule = new Capsule;
 $capsule->addConnection([
   'driver' => 'mysql',
-  'host' => 'localhost',
-  'database' => 'confluence',
-  'username' => 'root',
-  'password' => '',
+  'host' => $dbhost,
+  'database' => $db,
+  'username' => $username,
+  'password' => $dbpass,
   'charset' => 'utf8',
   'collation' => 'utf8_unicode_ci',
   'prefix' => ''
