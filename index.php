@@ -49,7 +49,8 @@ if (isset($_POST['type'])) {
           'min' => 'Please enter a valid :attribute field.',
           'email' => 'Please enter a valid email address.',
           'numberic' => 'The :attribute field should consist only of digits.',
-          'integer' => 'The :attribute field should be selected.'
+          'integer' => 'The :attribute field should be selected.',
+          'digits_between' => 'The :attribute field should be contain minimum of 10 digits.'
       );
 
       if ($_POST['type'] == "student") {
@@ -58,7 +59,7 @@ if (isset($_POST['type'])) {
           'faculty' => 'required',
           'name' => 'required',
           'email' => 'required|email',
-          'phone' => 'required|numeric|min:10',
+          'phone' => 'required|numeric|digits_between:10,15',
           'course'=>'required',
           'semester'=>'required',
           'gender'=>'required',
@@ -85,7 +86,7 @@ if (isset($_POST['type'])) {
           'college' => 'required|integer',
           'name' => 'required',
           'email' => 'required|email',
-          'phone' => 'required|numeric|min:10',
+          'phone' => 'required|numeric|digits_between:10,15',
           'designation' => 'required',
           'interest' => 'required',
           'gender'=>'required',
@@ -119,6 +120,13 @@ if (isset($_POST['type'])) {
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta property="og:title" content="CSCAN'16" />
+    <meta property="og:site_name" content="cscan.org.in"/>
+    <meta property="og:url" content="http://cscan.org.in"/>
+    <meta property="og:description" content="CSCAN 2016, the first of it's kind, is a conference aimed at bringing in student-teacher fraternity of CS Departments of reputed NIT's across the nation under a single umbrella for exchange of ideas spark innovation." />
+    <meta property="og:image" content="http://athena.nitc.ac.in/anas_b130705cs/cscan/logo.png">
+
     <link href="./css/styles.css" rel="stylesheet">
     <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
@@ -127,21 +135,25 @@ if (isset($_POST['type'])) {
 
   <body>
 
-    <div class="header">
+    <div class="header" id="home">
       <div class="over"></div>
       <div class="bg"></div>
       <div class="container-fluid">
         <div class="row">
-          <div class="col-md-6 col-md-offset-0 col-xs-12">
+          <div class="col-md-12 col-md-offset-0 col-xs-12">
             <div class="sub">
+              <div class="thefloat">
+                <a class="brochure" href="#">Download Brochure</a>
+                <a class="brochure" href="#">Call for participation</a>
+              </div>
               <img src="images/logo.png" />
               <div>
                 <h1>C-SCAN '16</h1>
                 <h2>Computer Science Conference of All NITs
-                 <br/>Feb 2 - Feb 2, 2016, NIT Calicut.</h2>
+                 <br/>Feb 19 - Feb 20, 2016, NIT Calicut.</h2>
               </div>
             </div>
-            <div class="menucontainer hidden-xs ">
+            <!--div class="menucontainer hidden-xs ">
               <ul class="menu">
                 <li>
                   <a class="hashmenu" href="#register">
@@ -157,15 +169,25 @@ if (isset($_POST['type'])) {
                 </li>
               </ul>
             </div>
-            <a class="brochure" href="#">Download Brochure</a>
+            <a class="brochure" href="#">Download Brochure</a-->
           </div>
         </div>
       </div>
-
-
-
-
     </div>
+
+    <nav class="navsection navbar navbar-default hidden-xs">
+      <div class="container-fluid">
+        <nav id="sac-navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li><a class="hashmenu" href="#register">Register</a></li>
+                <li><a class="hashmenu" href="#register">Accomodation</a></li>
+                <li><a class="hashmenu" href="#faq">FAQ</a></li>
+                <li><a class="hashmenu" href="#contact">Contact Us</a></li>
+              </ul>
+
+        </nav>
+      </div>
+    </nav>
 
     <div class="about" id="about">
       <div class="container-fluid">
@@ -180,9 +202,10 @@ if (isset($_POST['type'])) {
             </p>
           </div>
           <div class="col-md-5">
-            <h1 class="center">Sponsor</h1>
+            <h1 class="center">Sponsors</h1>
             <div class="sponsors">
               <img src="images/tata.png" />
+              <img src="images/teqip.png" />
               <p>in association with</p>
               <div class="assoc">
                 <img src="images/nitc.png" />
@@ -235,9 +258,11 @@ if (isset($_POST['type'])) {
         if($error == 0){
       ?>
           <div class="mesg">
+            <img src="images/logo.png" />
             <h2>You've successfully registered for CSCAN'16.</h2>
             <h3>Your registration id is <?=$regid?>. You'll receive a confirmation mail from us.</h3>
             <a class="brochure hashmenu" href="#reg" id="another">Register Another</a>
+            <a class="brochure hashmenu" href="#home">Home</a>
           </div>
       <?php
         }else if($error == ERROR_DB){
@@ -534,39 +559,31 @@ if (isset($_POST['type'])) {
       <div class="container-fluid">
         <div class="row" style="min-height: 250px">
           <div class="col-md-6">
-            <h2 class="center">Coordinators</h2>
+            <h2 class="center">Faculty Convener</h2>
             <div class="center">
               <div class="p">
-                <h3>Prasad</h3>
-                <h4>9567212875</h4>
-              </div>
-              <div class="p">
-                <h3>Gokul</h3>
-                <h4>9567212875</h4>
-              </div>
-              <div class="p">
-                <h3>Kiran</h3>
-                <h4>9567212875</h4>
+                <h3>Dr. S D Madhu Kumar</h3>
+                <h4><a href="mailto:madhu@nitc.ac.in">madhu@nitc.ac.in</a></h4>
+                <h4><a href="tel:0495 2286806">0495 2286806</a></h4>
               </div>
             </div>
 
 
           </div>
           <div class="col-md-6">
-            <h2 class="center">Managers</h2>
+            <h2 class="center">Coordinators</h2>
             <div class="center">
               <div class="p">
-                <h3>Prasad</h3>
-                <h4>9567212875</h4>
+                <h3>Prasad Krishnan</h3>
+                <h4><a href="mailto:prasadkrishnan@gmail.com">prasad_b120128cs@nitc.ac.in</a></h4>
+                <h4><a href="tel:+919497788940">+91 9497788940</a></h4>
               </div>
               <div class="p">
-                <h3>Gokul</h3>
-                <h4>9567212875</h4>
+                <h3>Hemant Pugaliya</h3>
+                <h4><a href="mailto:prasadkrishnan@gmail.com">hemant_b120787cs@nitc.ac.in</a></h4>
+                <h4><a href="tel:+919562847026">+91 9562847026</a></h4>
               </div>
-              <div class="p">
-                <h3>Kiran</h3>
-                <h4>9567212875</h4>
-              </div>
+
             </div>
           </div>
         </div>
