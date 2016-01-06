@@ -112,6 +112,7 @@ $headerheight: 300px;
     margin-top:50px;
     .thefloat{
       float: right;
+      margin-right: 50px;
       .brochure{
         display: block;
         margin: 5px 0px;
@@ -152,6 +153,9 @@ $headerheight: 300px;
     .sub{
       margin-left:0px;
       margin-top:0px;
+      .thefloat{
+        margin-right: 0px;
+      }
       img{
         width:70px;
         display: block;
@@ -270,48 +274,22 @@ $headerheight: 300px;
   }
 }
 
-.speakers{
-    padding:10px;
-    padding-bottom: 50px;
-    background: #E31E39;
-    color:#fff;
-    .box{
-        text-align: center;
-        .spk{
-           border-radius: 100%;
-           display: inline-block;
-           height:150px;
-           width:150px;
-           overflow: hidden;
-           margin: 5px;
-           position: relative;
-           box-shadow: 1px 1px 3px rgba(0,0,0,.3);
-           p{
-              position: absolute;
-              height:100%;
-              width:100%;
-              color:#fff;
-              z-index: 10;
-              text-align: center;
-              line-height: 150px;
-              font-size: 2rem;
-              font-family: normal;
-              opacity: 0;
-              background: rgba(0,0,0,.4);
-          }
-       }
-       .spk:hover{
-           cursor: pointer;
-       }
-       .active{
-           box-shadow: -10px 10px 15px rgba(0,0,0,.5);
-       }
-    }
-    .desc{
-        display: none;
-    }
+.accomodation{
+  padding: 25px 0px;
 }
 
+.committe{
+  h1{
+
+  }
+  h2{
+    padding-left: 10px;
+  }
+  .convenor{
+    padding-left: 15px;
+    font-size: 2rem;
+  }
+}
 
 .reg{
   background:  #252932;

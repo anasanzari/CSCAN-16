@@ -5891,7 +5891,8 @@ ul.datemenu li img {
     margin-left: 50px;
     margin-top: 50px; }
     .header .sub .thefloat {
-      float: right; }
+      float: right;
+      margin-right: 50px; }
       .header .sub .thefloat .brochure {
         display: block;
         margin: 5px 0px; }
@@ -5921,6 +5922,8 @@ ul.datemenu li img {
     .header .sub {
       margin-left: 0px;
       margin-top: 0px; }
+      .header .sub .thefloat {
+        margin-right: 0px; }
       .header .sub img {
         width: 70px;
         display: block; }
@@ -6004,40 +6007,14 @@ ul.datemenu li img {
     .registration .btncont .brochure {
       font-size: 2rem; }
 
-.speakers {
-  padding: 10px;
-  padding-bottom: 50px;
-  background: #E31E39;
-  color: #fff; }
-  .speakers .box {
-    text-align: center; }
-    .speakers .box .spk {
-      border-radius: 100%;
-      display: inline-block;
-      height: 150px;
-      width: 150px;
-      overflow: hidden;
-      margin: 5px;
-      position: relative;
-      box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); }
-      .speakers .box .spk p {
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        color: #fff;
-        z-index: 10;
-        text-align: center;
-        line-height: 150px;
-        font-size: 2rem;
-        font-family: normal;
-        opacity: 0;
-        background: rgba(0, 0, 0, 0.4); }
-    .speakers .box .spk:hover {
-      cursor: pointer; }
-    .speakers .box .active {
-      box-shadow: -10px 10px 15px rgba(0, 0, 0, 0.5); }
-  .speakers .desc {
-    display: none; }
+.accomodation {
+  padding: 25px 0px; }
+
+.committe h2 {
+  padding-left: 10px; }
+.committe .convenor {
+  padding-left: 15px;
+  font-size: 2rem; }
 
 .reg {
   background: #252932;

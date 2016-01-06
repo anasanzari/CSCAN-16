@@ -153,23 +153,6 @@ if (isset($_POST['type'])) {
                  <br/>Feb 19 - Feb 20, 2016, NIT Calicut.</h2>
               </div>
             </div>
-            <!--div class="menucontainer hidden-xs ">
-              <ul class="menu">
-                <li>
-                  <a class="hashmenu" href="#register">
-                    <img src="images/icons/icon_point.png" /> Register</a>
-                </li>
-                <li>
-                  <a class="hashmenu" href="#faq">
-                    <img src="images/icons/icon_reg.png" /> FAQ</a>
-                </li>
-                <li>
-                  <a class="hashmenu" href="#contact">
-                    <img src="images/icons/icon_contact.png" /> Contact Us</a>
-                </li>
-              </ul>
-            </div>
-            <a class="brochure" href="#">Download Brochure</a-->
           </div>
         </div>
       </div>
@@ -180,9 +163,11 @@ if (isset($_POST['type'])) {
         <nav id="sac-navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
                 <li><a class="hashmenu" href="#register">Register</a></li>
-                <li><a class="hashmenu" href="#register">Accomodation</a></li>
+                <li><a class="hashmenu" href="#accommodation">Accommodation</a></li>
                 <li><a class="hashmenu" href="#faq">FAQ</a></li>
                 <li><a class="hashmenu" href="#contact">Contact Us</a></li>
+                <li><a href="./committee.php">Committee</a></li>
+                <li><a href="./news.php">Latest News</a></li>
               </ul>
 
         </nav>
@@ -223,27 +208,27 @@ if (isset($_POST['type'])) {
       <div class="container-fluid">
         <div class="row">
           <h1 class="center">Registration</h1>
-          <div class="col-md-4">
+          <div class="col-md-5 col-md-offset-1">
             <h3 class="center">Important Dates</h3>
             <ul class="datemenu">
               <li>
-                <img src="images/icons/icon_calendar.png" /> Registrations open : 15<sup>th</sup> Nov 2015</li>
+                <img src="images/icons/icon_calendar.png" /> Registrations open : 11<sup>th</sup> JAN 2016</li>
               <li>
-                <img src="images/icons/icon_calendar.png" /> Last date for Registration: 1<sup>st</sup> Dec 2015</li>
+                <img src="images/icons/icon_calendar.png" /> Last date for Registration: 31<sup>st</sup> JAN 2016</li>
               <li>
-                <img src="images/icons/icon_calendar.png" /> Confirmation: 15<sup>th</sup> Dec 2015</li>
+                <img src="images/icons/icon_calendar.png" /> Confirmation: 1<sup>st</sup> FEB 2016</li>
             </ul>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4 col-md-offset-1">
             <h3 class="center">Eligibility</h3>
             <p class="justify">A team of 5 members will be representing each NIT. HOD/Senior faculty from CS Department, 2 B.Tech students(preferably second years), 1 M.Tech student and a Ph.D scholar will be part of the 5 member team. Additionally, if the institute offers
               an MCA course, then a final year MCA student can also be a part of the team as well. There are no restrictions on the selection team from the host, it is purely the participating institute's decision.</p>
           </div>
-          <div class="col-md-4">
+          <!--div class="col-md-4">
             <h3 class="center">Accomodation</h3>
             <p class="justify">Arrangements will be made for the accommodation of the students from the participating NITs at the NIT Calicut hostels at the hosting institute's expense. Sufficient assistance will be provided for the faculty members for their stay in hostels
               in and around the city. The faculty will have to meet the expenses towards accomodation on their own.</p>
-          </div>
+          </div-->
         </div>
 
         <div class="btncont">
@@ -317,8 +302,7 @@ if (isset($_POST['type'])) {
                              <option value="<?=$op->id?>"><?=$op->name?></option>
                         <?php
                            }
-                           ?>
-                          ?>
+                        ?>
                       </select>
                     </div>
                     <div class="form-group">
@@ -380,7 +364,6 @@ if (isset($_POST['type'])) {
                         <?php
                            }
                            ?>
-                          ?>
                       </select>
                     </div>
                     <div class="form-group">
@@ -430,6 +413,31 @@ if (isset($_POST['type'])) {
               </div>
             </div>
           </div>
+    </div>
+
+    <div class="accomodation" id="accommodation">
+
+      <div class="container-fluid">
+        <div class="row">
+
+          <div class="col-md-5 col-md-offset-1 col-xs-12">
+            <h1 class="center">Accommodation</h3>
+            <p class="justify">Arrangements will be made for the free accommodation and food for the students from the participating NITs at the NIT Calicut hostels. Sufficient assistance will be provided for the faculty members for their stay in hostels
+            NIT Calicut campus. Around 15 rooms are reserved for the faculty participants in NITC guest house which can be booked in advance on FCFS.
+            The workshop is sponsored by TEQIP-II at NIT Calicut. It is expected that the faculty participants would avail the funding from TEQIP in their respective institutions or any other sources like PDA to meet the expenses towards their travel and accommodation.
+            Local hospitality including pickup and drop will be taken care by the organizing team. Please visit the workshop site for the details on hostels near NIT Calicut.
+            </p>
+
+          </div>
+          <div class="col-md-5">
+            <h1 class="center">Travel</h3>
+            <p class="justify">NITC is well connected by railway, air and road facilities.
+              The Calicut Railway station(CLT) has trains to all major stations in India. The Kozhikode International Airport(CCJ) provides daily flights to and from major cities in India. Once you reach the Railway Station or the Airport just take an Auto-rickshaw, cab or bus to NITC by asking for REC or NIT Calicut.
+              Nearby area is Kattangal.Buses leave every 10-15 minutes from the main bus stand Palayam Bus stand to REC. </p>
+          </div>
+
+        </div>
+      </div>
     </div>
 
     <div class="faq" id="faq">
@@ -502,7 +510,7 @@ if (isset($_POST['type'])) {
 
               <div class="panel">
                 <a class="panel-heading collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven">
-                      7. Is it necessary for each particiipant to register?
+                      7. Is it necessary for each participant to register?
                 </a>
                 <div id="collapseSeven" class="panel-collapse collapse" >
                   <div class="panel-body">
@@ -557,14 +565,26 @@ if (isset($_POST['type'])) {
 
       <h1 class="center">Contact Us</h1>
       <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3">
+            <p class="center">For enquiries/details, please mail to <a href="mailto:cscan16@nitc.ac.in">cscan16@nitc.ac.in</a></p>
+            <p class="center"> Mobile no: <a href="tel:+919497788940">+91 9497788940</a>,
+              <a href="tel:+919562847026">+91 9562847026</a></p>
+
+          </div>
+
+        </div>
         <div class="row" style="min-height: 250px">
           <div class="col-md-6">
-            <h2 class="center">Faculty Convener</h2>
+            <h2 class="center">Faculty Conveners</h2>
             <div class="center">
               <div class="p">
                 <h3>Dr. S D Madhu Kumar</h3>
-                <h4><a href="mailto:madhu@nitc.ac.in">madhu@nitc.ac.in</a></h4>
                 <h4><a href="tel:0495 2286806">0495 2286806</a></h4>
+              </div>
+              <div class="p">
+                <h3>Lijiya A</h3>
+                <h4><a href="tel:0495 2286806">0495 2286815</a></h4>
               </div>
             </div>
 
@@ -575,12 +595,12 @@ if (isset($_POST['type'])) {
             <div class="center">
               <div class="p">
                 <h3>Prasad Krishnan</h3>
-                <h4><a href="mailto:prasadkrishnan@gmail.com">prasad_b120128cs@nitc.ac.in</a></h4>
+                <h4><a href="mailto:prasad_b120128cs@nitc.ac.in">prasad_b120128cs@nitc.ac.in</a></h4>
                 <h4><a href="tel:+919497788940">+91 9497788940</a></h4>
               </div>
               <div class="p">
                 <h3>Hemant Pugaliya</h3>
-                <h4><a href="mailto:prasadkrishnan@gmail.com">hemant_b120787cs@nitc.ac.in</a></h4>
+                <h4><a href="mailto:hemant_b120787cs@nitc.ac.in">hemant_b120787cs@nitc.ac.in</a></h4>
                 <h4><a href="tel:+919562847026">+91 9562847026</a></h4>
               </div>
 
