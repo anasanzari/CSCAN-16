@@ -5,13 +5,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <meta property="og:title" content="CSCAN'16" />
+  <meta property="og:title" content="C-SCAN'16" />
   <meta property="og:site_name" content="cscan.org.in"/>
   <meta property="og:url" content="http://cscan.org.in"/>
-  <meta property="og:description" content="CSCAN 2016, the first of it's kind, is a conference aimed at bringing in student-teacher fraternity of CS Departments of reputed NIT's across the nation under a single umbrella for exchange of ideas spark innovation." />
+  <meta property="og:description" content="C-SCAN 2016, the first of it's kind, is a conference aimed at bringing in student-teacher fraternity of CS Departments of reputed NIT's across the nation under a single umbrella for exchange of ideas spark innovation." />
   <meta property="og:image" content="http://athena.nitc.ac.in/anas_b130705cs/cscan/logo.png">
-
+  <title>C-SCAN'16</title>
   <link href="./css/styles.css" rel="stylesheet">
+  <link rel="icon" href="./logo.png" type="image/png">
+  <link rel="shortcut icon" href="./logo.png" type="image/png">
+
   <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/dynamics.min.js"></script>

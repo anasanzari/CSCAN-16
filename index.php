@@ -31,9 +31,9 @@ if (isset($_POST['type'])) {
     }else{
 
       $mail = new Message;
-      $mail->setFrom("CSCAN'16 <noreply@cscan.org>")
+      $mail->setFrom("C-SCAN'16 <noreply@cscan.org>")
       ->addTo($_POST['email'])
-      ->setSubject("CSAN'16 Registration");
+      ->setSubject("C-SCAN'16 Registration");
 
       $mailer = new Nette\Mail\SmtpMailer(array(
         'host' => 'smtp.gmail.com',
@@ -73,7 +73,7 @@ if (isset($_POST['type'])) {
 
           if($v=Student::create($_POST)){
             $regid = $v->colg->abbr."S".str_pad($_POST['regid'], 3, '0', STR_PAD_LEFT);
-            $mail->setBody("You have successfully registered for CSCAN'16. Your registration id is ".$regid.".");
+            $mail->setBody("You have successfully registered for C-SCAN'16. Your registration id is ".$regid.".");
             $mailer->send($mail);
           }else{
             $error = ERROR_DB;
@@ -100,7 +100,7 @@ if (isset($_POST['type'])) {
 
           if($v = Faculty::create($_POST)){
             $regid = $v->colg->abbr."F".str_pad($_POST['regid'], 3, '0', STR_PAD_LEFT);
-            $mail->setBody("You have successfully registered for CSCAN'16. Your registration id is ".$regid);
+            $mail->setBody("You have successfully registered for C-SCAN'16. Your registration id is ".$regid);
             $mailer->send($mail);
           }else{
             $error = ERROR_DB;
@@ -121,13 +121,16 @@ if (isset($_POST['type'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <meta property="og:title" content="CSCAN'16" />
+    <meta property="og:title" content="C-SCAN'16" />
     <meta property="og:site_name" content="cscan.org.in"/>
     <meta property="og:url" content="http://cscan.org.in"/>
-    <meta property="og:description" content="CSCAN 2016, the first of it's kind, is a conference aimed at bringing in student-teacher fraternity of CS Departments of reputed NIT's across the nation under a single umbrella for exchange of ideas spark innovation." />
+    <meta property="og:description" content="C-SCAN 2016, the first of it's kind, is a conference aimed at bringing in student-teacher fraternity of CS Departments of reputed NIT's across the nation under a single umbrella for exchange of ideas spark innovation." />
     <meta property="og:image" content="http://athena.nitc.ac.in/anas_b130705cs/cscan/logo.png">
-
+    <title>C-SCAN'16</title>
     <link href="./css/styles.css" rel="stylesheet">
+    <link rel="icon" href="./logo.png" type="image/png">
+    <link rel="shortcut icon" href="./logo.png" type="image/png">
+
     <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/dynamics.min.js"></script>
@@ -144,13 +147,13 @@ if (isset($_POST['type'])) {
             <div class="sub">
               <div class="thefloat">
                 <a class="brochure" href="#">Download Brochure</a>
-                <a class="brochure" href="#">Call for participation</a>
+                <a class="brochure" href="#">Call for Participation</a>
               </div>
               <img src="images/logo.png" />
               <div>
                 <h1>C-SCAN '16</h1>
                 <h2>Computer Science Conference of All NITs
-                 <br/>Feb 19 - Feb 20, 2016, NIT Calicut.</h2>
+                 <br/>Feb 19 - Feb 21, 2016, NIT Calicut.</h2>
               </div>
             </div>
           </div>
@@ -178,11 +181,11 @@ if (isset($_POST['type'])) {
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-5 col-md-offset-1">
-            <h1 class="center">About CSCAN</h1>
+            <h1 class="center">About C-SCAN</h1>
             <p class="justify">
-              CSCAN 2016, the first of it's kind, is a conference aimed at bringing in student-teacher fraternity of CS Departments of reputed NIT's across the nation under a single umbrella for exchange of ideas spark innovation. The conference would serve as
+              C-SCAN 2016, the first of it's kind, is a conference aimed at bringing in student-teacher fraternity of CS Departments of reputed NIT's across the nation under a single umbrella for exchange of ideas spark innovation. The conference would serve as
               a platform to improve interaction and bridge the gap between faculty and students of different NITs. This would help identify patrons of similiar research areas and help initiate collaboration in research projects to subsequently publish
-              research papers. This conference presents excellent opportunity for students among various NITs to collaborate and form strong ties of technical expertise. This year's edition of CSCAN will be hosted by National Institute of Technology
+              research papers. This conference presents excellent opportunity for students among various NITs to collaborate and form strong ties of technical expertise. This year's edition of C-SCAN will be hosted by National Institute of Technology
               Calicut.
             </p>
           </div>
@@ -209,14 +212,14 @@ if (isset($_POST['type'])) {
         <div class="row">
           <h1 class="center">Registration</h1>
           <div class="col-md-5 col-md-offset-1">
-            <h3 class="center">Important Dates</h3>
+            <h3>Important Dates</h3>
             <ul class="datemenu">
               <li>
-                <img src="images/icons/icon_calendar.png" /> Registrations open : 11<sup>th</sup> JAN 2016</li>
+                <img src="images/icons/icon_calendar.png" /> Registration opens : 11<sup>th</sup> JAN 2016</li>
               <li>
-                <img src="images/icons/icon_calendar.png" /> Last date for Registration: 31<sup>st</sup> JAN 2016</li>
+                <img src="images/icons/icon_calendar.png" /> Last date for Registration : 31<sup>st</sup> JAN 2016</li>
               <li>
-                <img src="images/icons/icon_calendar.png" /> Confirmation: 1<sup>st</sup> FEB 2016</li>
+                <img src="images/icons/icon_calendar.png" /> Confirmation : 1<sup>st</sup> FEB 2016</li>
             </ul>
           </div>
           <div class="col-md-4 col-md-offset-1">
@@ -224,11 +227,7 @@ if (isset($_POST['type'])) {
             <p class="justify">A team of 5 members will be representing each NIT. HOD/Senior faculty from CS Department, 2 B.Tech students(preferably second years), 1 M.Tech student and a Ph.D scholar will be part of the 5 member team. Additionally, if the institute offers
               an MCA course, then a final year MCA student can also be a part of the team as well. There are no restrictions on the selection team from the host, it is purely the participating institute's decision.</p>
           </div>
-          <!--div class="col-md-4">
-            <h3 class="center">Accomodation</h3>
-            <p class="justify">Arrangements will be made for the accommodation of the students from the participating NITs at the NIT Calicut hostels at the hosting institute's expense. Sufficient assistance will be provided for the faculty members for their stay in hostels
-              in and around the city. The faculty will have to meet the expenses towards accomodation on their own.</p>
-          </div-->
+
         </div>
 
         <div class="btncont">
@@ -244,7 +243,7 @@ if (isset($_POST['type'])) {
       ?>
           <div class="mesg">
             <img src="images/logo.png" />
-            <h2>You've successfully registered for CSCAN'16.</h2>
+            <h2>You've successfully registered for C-SCAN'16.</h2>
             <h3>Your registration id is <?=$regid?>. You'll receive a confirmation mail from us.</h3>
             <a class="brochure hashmenu" href="#reg" id="another">Register Another</a>
             <a class="brochure hashmenu" href="#home">Home</a>
@@ -293,6 +292,9 @@ if (isset($_POST['type'])) {
                   <form id="studentform" action="#reg" method="POST">
                     <h2>Student Registration <a id="facultybtn" class="btn btn-danger">Faculty Form</a></h2>
                     <div class="form-group">
+                      <input type="text" name="name" class="form-control" placeholder="Participant Name" required>
+                    </div>
+                    <div class="form-group">
                       <select name="college" class="form-control" required>
                         <option value="" disabled  selected>Select College</option>
                          <?php
@@ -306,12 +308,9 @@ if (isset($_POST['type'])) {
                       </select>
                     </div>
                     <div class="form-group">
-                      <!--label>Password</label-->
                       <input type="text" name="faculty" class="form-control" placeholder="Accompanying Faculty" required>
                     </div>
-                    <div class="form-group">
-                      <input type="text" name="name" class="form-control" placeholder="Participant Name" required>
-                    </div>
+
                     <div class="form-group">
                       <input type="email" name="email" class="form-control" placeholder="Email" required>
                     </div>
@@ -320,6 +319,14 @@ if (isset($_POST['type'])) {
                     </div>
                     <div class="form-group">
                       <input type="text" name="course" class="form-control" placeholder="Course" required>
+                    </div>
+                    <div class="form-group">
+                      <select name="college" class="form-control" required>
+                        <option value="" disabled  selected>Select Course</option>
+                        <option value="B.Tech">B.Tech</option>
+                        <option value="M.Tech">M.Tech</option>
+                        <option value="Ph.D">Ph.D</option>
+                      </select>
                     </div>
                     <div class="form-group">
                       <input type="text" name="semester" class="form-control" placeholder="Current Semester" required>
@@ -367,7 +374,7 @@ if (isset($_POST['type'])) {
                       </select>
                     </div>
                     <div class="form-group">
-                      <input type="text" name="name" class="form-control" placeholder="Participant Name" required>
+                      <input type="text" name="name" class="form-control" placeholder="Name" required>
                     </div>
                     <div class="form-group">
                       <input type="text" name="designation" class="form-control" placeholder="Designation" required>
@@ -452,7 +459,7 @@ if (isset($_POST['type'])) {
                 </a>
                 <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel">
                   <div class="panel-body">
-                      NITC is well connected by railway,air and road facilities. The Calicut Railway station has trains to all major stations in India. The Kozhikode International Airport provides daily flights to and from major cities in India. Once you reach the Railway Station or the Airport just take an Auto-rickshaw, cab or bus to NITC by asking for REC or NIT Calicut. Nearby area is Kattangal.Buses leave every 10-15 minutes from the main bus stand Palayam Bus stand to REC.
+                      NITC is well connected by railway,air and road facilities. All major stations in India have trains to Kozhikode Railway station. The Kozhikode International Airport provides daily flights to and from major cities in India. Once you reach the Railway Station or the Airport just take an Auto-rickshaw, cab or bus to NITC by asking for REC or NIT Calicut. Nearby area is Kattangal.Buses leave every 10-15 minutes from the main bus stand Palayam Bus stand to REC.
                   </div>
                 </div>
               </div>
@@ -462,7 +469,7 @@ if (isset($_POST['type'])) {
                 </a>
                 <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" >
                   <div class="panel-body">
-                    Accommodation will be provided in the NITC hostels and food services will also be taken care of.  Also Kattangal has various places to indulge in good Malabar food.
+                    Accommodation will be provided in the NITC hostels and food services will also be taken care of.
                   </div>
                 </div>
               </div>
@@ -472,7 +479,7 @@ if (isset($_POST['type'])) {
                 </a>
                 <div id="collapseThree" class="panel-collapse collapse" >
                   <div class="panel-body">
-                    A wide exposure to students from different NIT's all over India. More internship opportunities for students from faculty in different NIT’s. Exchange of ideas and views.
+                    A wide exposure to students from different NITs all over India. More internship opportunities for students from faculty in different NIT’s. Exchange of ideas and views.
                   </div>
                 </div>
               </div>
@@ -482,7 +489,8 @@ if (isset($_POST['type'])) {
                 </a>
                 <div id="collapseFour" class="panel-collapse collapse" >
                   <div class="panel-body">
-                    Team selection is entirely the visiting institute’s decision. If you still have issues then do contact our team relations coordinator at “ADD EMAIL”.
+                    Team selection is entirely the visiting institute’s decision.
+                    For queries regarding the team feel free to contact us at cscan16@nitc.ac.in.
                   </div>
                 </div>
               </div>
@@ -492,7 +500,7 @@ if (isset($_POST['type'])) {
                 </a>
                 <div id="collapseFive" class="panel-collapse collapse" >
                   <div class="panel-body">
-                    The dates have been chosen with regard of no clashing with any exams with most NIT’s. If there are issues then do contact our team relations coordinator at “ADD EMAIL”.
+                    The dates have been chosen with regard of no clashing with any exams with most NIT’s.
                   </div>
                 </div>
               </div>
@@ -503,7 +511,7 @@ if (isset($_POST['type'])) {
                 </a>
                 <div id="collapseSix" class="panel-collapse collapse" >
                   <div class="panel-body">
-                    You’ll recieve a confirmation mail from us stating that you have been registered and it would contain your team details.
+                    You’ll recieve a confirmation mail from cscan16@gmail.com stating that you have been registered and it would contain your team details.
                   </div>
                 </div>
               </div>
@@ -514,7 +522,7 @@ if (isset($_POST['type'])) {
                 </a>
                 <div id="collapseSeven" class="panel-collapse collapse" >
                   <div class="panel-body">
-                    Yes, each participant has to register seperately in the website.This it to keep track of your food preference and providing hostel accomadation.
+                    Yes, each participant has to register seperately in the website.This it to keep track of your food preference and providing hostel accommodation.
                   </div>
                 </div>
               </div>
@@ -525,7 +533,7 @@ if (isset($_POST['type'])) {
                 </a>
                 <div id="collapseEight" class="panel-collapse collapse" >
                   <div class="panel-body">
-                    Students pursuing a course in the Computer Science Department of any of the National Institute of Technology across India are eligible to register for the meet.
+                    Students pursuing a course in the Computer Science Department of any of the National Institute of Technology across India are eligible to register.
                   </div>
                 </div>
               </div>
@@ -536,7 +544,10 @@ if (isset($_POST['type'])) {
                 </a>
                 <div id="collapseNine" class="panel-collapse collapse" >
                   <div class="panel-body">
-                    Yes. The institute identification card provides us a medium to confirm that you are a student of an NIT. Incase of absence of an ID card, please present a bonafide certificate from your department stating that “You are a bondafide student of the department for the particular course”. Do include your Roll Number in the certificate too.
+                    Yes.Please carry a valid ID Card.
+                    Incase of absence of an ID card, please present a bonafide certificate from the Head of Department stating
+                    that “You are a bondafide student of the department for the particular course”.
+                    Do include your Roll Number in 	the certificate too.
                   </div>
                 </div>
               </div>
@@ -596,12 +607,12 @@ if (isset($_POST['type'])) {
               <div class="p">
                 <h3>Prasad Krishnan</h3>
                 <h4><a href="mailto:prasad_b120128cs@nitc.ac.in">prasad_b120128cs@nitc.ac.in</a></h4>
-                <h4><a href="tel:+919497788940">+91 9497788940</a></h4>
+
               </div>
               <div class="p">
                 <h3>Hemant Pugaliya</h3>
                 <h4><a href="mailto:hemant_b120787cs@nitc.ac.in">hemant_b120787cs@nitc.ac.in</a></h4>
-                <h4><a href="tel:+919562847026">+91 9562847026</a></h4>
+
               </div>
 
             </div>
