@@ -9,7 +9,7 @@
   <meta property="og:site_name" content="cscan.org.in"/>
   <meta property="og:url" content="http://cscan.org.in"/>
   <meta property="og:description" content="C-SCAN 2016, the first of it's kind, is a conference aimed at bringing in student-teacher fraternity of CS Departments of reputed NIT's across the nation under a single umbrella for exchange of ideas spark innovation." />
-  <meta property="og:image" content="http://athena.nitc.ac.in/anas_b130705cs/cscan/logo.png">
+  <meta property="og:image" content="http://cscan.org.in/logo.png">
   <title>C-SCAN'16</title>
   <link href="./css/styles.css" rel="stylesheet">
   <link rel="icon" href="./logo.png" type="image/png">
@@ -31,13 +31,12 @@
           <div class="sub">
             <div class="thefloat">
               <a class="brochure" href="#">Download Brochure</a>
-              <a class="brochure" href="#">Call for participation</a>
             </div>
             <img src="images/logo.png" />
             <div>
               <h1>C-SCAN '16</h1>
               <h2>Computer Science Conference of All NITs
-               <br/>Feb 19 - Feb 20, 2016, NIT Calicut.</h2>
+                <br/>Feb 19 - 21, 2016, NIT Calicut.</h2>
             </div>
           </div>
         </div>
@@ -50,7 +49,6 @@
       <nav id="sac-navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
               <li><a href="./">Home</a></li>
-              <li><a href="./committee.php">Committe</a></li>
             </ul>
 
       </nav>

@@ -5892,7 +5892,8 @@ ul.datemenu li img {
     margin-top: 50px; }
     .header .sub .thefloat {
       float: right;
-      margin-right: 50px; }
+      margin-right: 175px;
+      margin-top: 30px; }
       .header .sub .thefloat .brochure {
         display: block;
         margin: 5px 0px; }
@@ -5923,7 +5924,8 @@ ul.datemenu li img {
       margin-left: 0px;
       margin-top: 0px; }
       .header .sub .thefloat {
-        margin-right: 0px; }
+        margin-right: 0px;
+        margin-top: 0px; }
       .header .sub img {
         width: 70px;
         display: block; }
@@ -5934,6 +5936,9 @@ ul.datemenu li img {
       .header .sub h2 {
         margin-top: 0;
         font-size: 1.5rem; } }
+
+.contactus .con {
+  font-size: 2rem; }
 
 .navsection .container-fluid {
   margin-left: 100px; }
@@ -5986,42 +5991,66 @@ ul.datemenu li img {
 
 .about {
   color: #000; }
+  .about .subh {
+    font-size: 2.5rem;
+    margin-bottom: 25px; }
   .about .sponsors {
     padding-top: 5px;
     padding-bottom: 20px;
     text-align: center; }
-    .about .sponsors img {
-      max-width: 250px; }
-    .about .sponsors .assoc {
-      text-align: center; }
-      .about .sponsors .assoc img {
-        width: 100px;
-        margin-right: 10px; }
+    .about .sponsors figure {
+      display: inline-block;
+      max-width: 250px;
+      vertical-align: top; }
+      .about .sponsors figure img {
+        max-width: 250px; }
+  .about .assoc {
+    text-align: center; }
+    .about .assoc img {
+      width: 100px;
+      margin-right: 10px; }
 
 .registration {
   background: #3A6F81;
   color: #fff; }
+  .registration .impdate {
+    padding-left: 100px; }
   .registration .btncont {
     padding: 30px 0px;
     text-align: center; }
     .registration .btncont .brochure {
-      font-size: 2rem; }
+      font-size: 1.5rem; }
+  @media screen and (max-width: 800px) {
+    .registration .impdate {
+      padding-left: 25px; } }
 
 .accomodation {
   padding: 25px 0px; }
 
 .committe h2 {
-  padding-left: 10px; }
+  padding-left: 15px; }
+.committe h3 {
+  padding-left: 20px; }
 .committe .convenor {
-  padding-left: 15px;
+  padding-left: 25px;
   font-size: 2rem; }
+.committe ul {
+  padding-left: 55px; }
+  .committe ul li {
+    font-size: 2rem; }
+.committe span {
+  font-size: 1.6rem; }
+.committe .dir {
+  font-size: 2.5rem; }
 
 .reg {
   background: #252932;
   color: #fff;
   display: block;
   overflow: hidden;
-  position: relative; }
+  position: relative;
+  margin-top: -20px;
+  min-height: 500px; }
   .reg .wrap {
     padding: 10px;
     padding-bottom: 50px; }
@@ -6091,6 +6120,9 @@ a.brochure:hover {
 
 .recaptcha {
   min-height: 70px; }
+
+.fbtn {
+  margin-top: 25px; }
 
 .p {
   display: inline-block;

@@ -112,7 +112,8 @@ $headerheight: 300px;
     margin-top:50px;
     .thefloat{
       float: right;
-      margin-right: 50px;
+      margin-right: 175px;
+      margin-top: 30px;
       .brochure{
         display: block;
         margin: 5px 0px;
@@ -155,6 +156,7 @@ $headerheight: 300px;
       margin-top:0px;
       .thefloat{
         margin-right: 0px;
+        margin-top: 0px;
       }
       img{
         width:70px;
@@ -171,6 +173,12 @@ $headerheight: 300px;
         font-size: 1.5rem;
       }
     }
+  }
+}
+
+.contactus{
+  .con{
+    font-size: 2rem;
   }
 }
 
@@ -244,19 +252,30 @@ $headerheight: 300px;
 
   color:#000;
 
+  .subh{
+    font-size: 2.5rem;
+    margin-bottom: 25px;
+  }
+
   .sponsors{
     padding-top: 5px;
     padding-bottom: 20px;
     text-align: center;
-    img{
+    figure{
+      display: inline-block;
       max-width: 250px;
-    }
-    .assoc{
-      text-align: center;
+      vertical-align: top;
       img{
-        width:100px;
-        margin-right: 10px;
+        max-width: 250px;
       }
+
+    }
+  }
+  .assoc{
+    text-align: center;
+    img{
+      width:100px;
+      margin-right: 10px;
     }
   }
 
@@ -265,14 +284,24 @@ $headerheight: 300px;
 .registration{
     background: #3A6F81;
     color:#fff;
+  .impdate{
+    padding-left: 100px;
+  }
   .btncont{
     padding:30px 0px;
     text-align: center;
     .brochure{
-      font-size: 2rem;
+      font-size: 1.5rem;
+    }
+  }
+  @media screen and (max-width: 800px) {
+    .impdate{
+      padding-left: 25px;
     }
   }
 }
+
+
 
 .accomodation{
   padding: 25px 0px;
@@ -283,11 +312,25 @@ $headerheight: 300px;
 
   }
   h2{
-    padding-left: 10px;
+    padding-left: 15px;
+  }
+  h3{
+      padding-left: 20px;
   }
   .convenor{
-    padding-left: 15px;
+    padding-left: 25px;
     font-size: 2rem;
+  }
+  ul{
+    padding-left: 55px;
+    li{
+      font-size: 2rem;    }
+  }
+  span{
+    font-size: 1.6rem;
+  }
+  .dir{
+    font-size: 2.5rem;
   }
 }
 
@@ -297,6 +340,8 @@ $headerheight: 300px;
   display: block;
   overflow: hidden;
   position: relative;
+  margin-top: -20px;
+  min-height: 500px;
   @extend .trans;
 
   .wrap{
@@ -395,6 +440,9 @@ a.brochure:hover{
   min-height: 70px;
 }
 
+.fbtn{
+  margin-top: 25px;
+}
 
 .p{
     display: inline-block;
