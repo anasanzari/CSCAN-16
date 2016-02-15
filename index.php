@@ -11,6 +11,7 @@
                 <li><a class="hashmenu" href="#contact">Contact Us</a></li>
                 <li><a href="./committee.php">Committee</a></li>
                 <li><a href="./news.php">Latest News</a></li>
+                <li><a href="./hotels.php">Hotels Nearby</a></li>
               </ul>
 
         </nav>
