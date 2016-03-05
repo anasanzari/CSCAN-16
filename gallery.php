@@ -85,7 +85,7 @@ function disabled($i,$c){
               ?>
                 <div class="pictures">
                   <a href="#">
-                    <img src="./images/photos/<?=$i?>.JPG" alt="Not Found!" data-toggle="modal" data-target="#myModal">
+                    <img src="./images/photos/<?=$i?>.JPG" data-toggle="modal" data-target="#myModal">
                   </a>
                 </div>
               <?php } ?>
