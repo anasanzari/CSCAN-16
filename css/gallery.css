@@ -1,0 +1,20 @@
+div.pictures {
+  margin: 5px;
+  position: relative;;
+  float: left;
+  background-position: 50% 50%;
+  background-repeat:   no-repeat;
+  background-size:     cover;
+  width:  275px;
+  height: 200px;
+  overflow: hidden;
+}
+div.pictures img:hover {
+    /*opacity: 0.75;*/
+    transform:scale(1.2);
+}
+div.pictures img{
+  transition: linear 0.4s all;
+  height: 200px;
+  width: 100%;
+}

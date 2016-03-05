@@ -12,6 +12,7 @@
                 <li><a href="./committee.php">Committee</a></li>
                 <li><a href="./news.php">Latest News</a></li>
                 <li><a href="./hotels.php">Hotels Nearby</a></li>
+                <li><a href="./gallery.php">Gallery</a></li>
               </ul>
 
         </nav>
