@@ -1,3 +1,19 @@
+<?php
+if(isset($_GET['page'])){
+  $c = $_GET['page'];
+  if($c>4||$c<=0){
+    $c = 1;
+  }
+}else{
+  $c = 1;
+}
+function active($i,$c){
+  if($i==$c) return 'class="active"';
+}
+function disabled($i,$c){
+  if($i==$c) return 'class="disabled"';
+}
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,80 +75,35 @@
   <div class="committe" style="min-height:300px">
     <div class="container">
       <div class="row">
-        <!--div class="col-md-8 col-md-offset-2 col-xs-12">
-          <h1>Hotels Nearby</h1>
-            <ul>
-              <li>
-                <p>The Renai Cochin, Hill Side Mukkam</p>
-                <p>Phone: 0495 3244150</p>
-                <p>Mail: mail@hillside.com</p>
-              </li>
-              <li>
-                <p>A R Residency, Plaza Junction, Kunnamangalam</p>
-                <p>Phone:  +91 495 2800169 </p>
-                <p>Mail: arplazaresidency@gmail.com</p>
-              </li>
-            </ul>
-        </div-->
         <div class="col-md-12 col-xs-12">
           <h1>Gallery</h1>
           <div id="tabContent" class="tab-content">
             <div role="tabpanel" class="tab-pane fade active in" id="pics1" aria-labelledby="pics-tab" style="text-align:center">
-              <div class="pictures">
-                <a href="#">
-                  <img src="images\pic.jpg" alt="Not Found!" data-toggle="modal" data-target="#myModal">
-                </a>
-              </div>
-              <div class="pictures">
-                <a href="#">
-                  <img src="images\pic.jpg" alt="Not Found!" data-toggle="modal" data-target="#myModal">
-                </a>
-              </div>
-              <div class="pictures">
-                <a href="#">
-                  <img src="images\pic.jpg" alt="Not Found!" data-toggle="modal" data-target="#myModal">
-                </a>
-              </div>
-              <div class="pictures">
-                <a href="#">
-                  <img src="images\pic.jpg" alt="Not Found!" data-toggle="modal" data-target="#myModal">
-                </a>
-              </div>
-            </div>
-            <div role="tabpanel" class="tab-pane fade" id="pics2" aria-labelledby="pics-tab2">
-              <div class="pictures">
-                <a href="#">
-                  <img src="images\pic.jpg" alt="Not Found!" data-toggle="modal" data-target="#myModal">
-                </a>
-              </div>
-              <div class="pictures">
-                <a href="#">
-                  <img src="images\pic.jpg" alt="Not Found!" data-toggle="modal" data-target="#myModal">
-                </a>
-              </div>
-              <div class="pictures">
-                <a href="#">
-                  <img src="images\pic.jpg" alt="Not Found!" data-toggle="modal" data-target="#myModal">
-                </a>
-              </div>
-              <div class="pictures">
-                <a href="#">
-                  <img src="images\pic.jpg" alt="Not Found!" data-toggle="modal" data-target="#myModal">
-                </a>
-              </div>
+              <?php
+               $f = ($c-1)*8+1;
+               for($i=$f;$i<$f+8;$i++){
+              ?>
+                <div class="pictures">
+                  <a href="#">
+                    <img src="./images/photos/<?=$i?>.JPG" alt="Not Found!" data-toggle="modal" data-target="#myModal">
+                  </a>
+                </div>
+              <?php } ?>
             </div>
           </div>
           <nav class="pages" style="text-align:center">
             <ul class="pagination">
-              <li style="cursor:pointer">
-                <a id="prev">
+              <li style="cursor:pointer" <?=disabled(1,$c);?>>
+                <a id="prev" href="./gallery.php?page=<?=$c-1?>" >
                   <span aria-hidden="true">&laquo;</span>
                 </a>
               </li>
-              <li class="active"><a href="#pics1" id="p1" role="tab" data-toggle="tab" aria-controls="pics" aria-expanded="true">1</a></li>
-              <li><a href="#pics2" id="p2" role="tab" data-toggle="tab" aria-controls="pics2" aria-expanded="true">2</a></li>
-              <li style="cursor:pointer">
-                <a id="next">
+              <li <?=active(1,$c);?>><a href="./gallery.php?page=1">1</a></li>
+              <li <?=active(2,$c);?>><a href="./gallery.php?page=2">2</a></li>
+              <li <?=active(3,$c);?>><a href="./gallery.php?page=3">3</a></li>
+              <li <?=active(4,$c);?>><a href="./gallery.php?page=4">4</a></li>
+              <li style="cursor:pointer" <?=disabled(4,$c);?>>
+                <a id="next" href="./gallery.php?page=<?=$c+1?>" >
                   <span aria-hidden="true">&raquo;</span>
                 </a>
               </li>
@@ -146,6 +117,7 @@
   <div class="footer">
     <p> © Creative and Intellectual minds of NIT Calicut </p>
   </div>
+
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -161,17 +133,10 @@
       </div>
     </div>
   </div>
+
   <script>
-  $(document).ready(function(){
-    $('.pages').on('click','#prev',function(){
-      $('#p1').click();
-    });
-    $('.pages').on('click','#next',function(){
-      $('#p2').click();
-    });
     $('.pictures').on('click', 'img', function(){
-      var src = $(this).attr('src');
-      $("#img").attr("src", src);
-    });
-  });
+       var src = $(this).attr('src');
+       $("#img").attr("src", src);
+     });
   </script>
