@@ -32,7 +32,7 @@
             <div class="thefloat">
               <a class="brochure" href="#">Call for Participation</a>
               <a class="brochure" href="./brochure.pdf">Download Brochure</a>
-
+              <a class="brochure" href="./files/proceedings.pdf">Proceedings</a>
             </div>
             <img src="images/logo.png" />
             <div>
